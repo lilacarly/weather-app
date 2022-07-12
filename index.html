@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Below is for bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--this is for axios-->
+    <title>Weather App</title>
+
+    <!-- Below is for bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <!-- Below is supposed to link to css styling-->
+    <link
+      rel="stylesheet"
+      href="/Users/lgilbreath/Desktop/SheCodes/SheCodesPlus/WeatherApp/style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Quicksand:wght@300;400;500;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🌦 What's the weather?</h1>
+      <br />
+      <form id="search-form">
+        <input
+          type="text"
+          placeholder="Enter city name here..."
+          class="entry"
+          id="cityEntry"
+        />
+        <input type="submit" value="Search" class="search" />
+        <button id="current-location-button">Current Location</button>
+      </form>
+      <br />
+      <div class="card">
+        <div class="card-header" id="todayDate">Tuesday July 5, 2022</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <p class="card-title city" id="cardCity">Boston, MA</p>
+              <p class="card-text temp">
+                <span id="theTemp">85</span>
+                <a href="#" class="units" id="fahrenheit">˚F</a>
+                <a href="#" class="units" id="celsius">˚C</a>
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="card-title hour">10am</p>
+              <p class="card-text emoji">☀️</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="row futureHours">
+          <div class="col">11am</div>
+          <div class="col">12am</div>
+          <div class="col">1pm</div>
+          <div class="col">2pm</div>
+          <div class="col">3pm</div>
+        </div>
+        <div class="row futureEmojis">
+          <div class="col">☀️</div>
+          <div class="col">☀️</div>
+          <div class="col">🌤</div>
+          <div class="col">🌧</div>
+          <div class="col">🌥</div>
+        </div>
+        <div class="row futureTemps">
+          <div class="col">86˚F</div>
+          <div class="col">88˚F</div>
+          <div class="col">88˚F</div>
+          <div class="col">82˚F</div>
+          <div class="col">82˚F</div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="row nextDays">
+          <div class="col">Saturday</div>
+          <div class="col">Sunday</div>
+          <div class="col">Monday</div>
+        </div>
+        <div class="row nextEmojis">
+          <div class="col">🌤</div>
+          <div class="col">☀️</div>
+          <div class="col">🌤</div>
+        </div>
+        <div class="row nextTemps">
+          <div class="col">82˚F</div>
+          <div class="col">86˚F</div>
+          <div class="col">80˚F</div>
+        </div>
+      </div>
+      <!-- Below is for bootstrap -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"
+      ></script>
+
+      <!-- Below is link to JS-->
+      <script src="/Users/lgilbreath/Desktop/SheCodes/SheCodesPlus/WeatherApp/script.js"></script>
+      <script>
+        //below is to search for a city and display that city, and weather at the city
+        function showTemperature(response) {
+          let temperature = Math.round(response.data.main.temp);
+          tempDisplay = document.querySelector("#theTemp");
+          tempDisplay.innerHTML = temperature;
+          document.querySelector("#cardCity").innerHTML = response.data.name;
+        }
+        function searchCity(city) {
+          let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
+          let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+          axios.get(apiUrl).then(showTemperature);
+        }
+        function handleSubmit(event) {
+          debugger;
+          event.preventDefault();
+          let city = document.querySelector("#cityEntry").value;
+          searchCity(city);
+        }
+
+        let newCity = document.querySelector("#search-form");
+        newCity.addEventListener("submit", handleSubmit);
+
+        searchCity("Boston");
+
+        //below is what to do when the current location button gets pressed
+        let currentLocationButton = document.querySelector("button");
+        currentLocationButton.addEventListener("click", getCurrentLocation);
+
+        function getCurrentLocation(event) {
+          event.preventDefault();
+          navigator.geolocation.getCurrentPosition(showPosition);
+          function showPosition(position) {
+            let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
+            axios.get(apiUrl).then(showTemperature);
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
