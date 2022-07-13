@@ -42,10 +42,10 @@
       </form>
       <br />
       <div class="card">
-        <div class="card-header" id="todayDate">Tuesday July 5, 2022</div>
+        <div class="card-header" id="todayDate"></div>
         <div class="card-body">
           <div class="row">
-            <div class="col-6">
+            <div class="col-4">
               <p class="card-title city" id="cardCity">Boston, MA</p>
               <p class="card-text temp">
                 <span id="theTemp">85</span>
@@ -53,9 +53,19 @@
                 <a href="#" class="units" id="celsius">˚C</a>
               </p>
             </div>
-            <div class="col-6">
-              <p class="card-title hour">10am</p>
-              <p class="card-text emoji">☀️</p>
+            <img src="" alt="Clear" id="emoji" class="col-4" />
+            <div class="col-4">
+              <ul>
+                <li id="descriptionElement" >
+                  Description
+                </li>
+                <li>
+                  Windspeed
+                </li>
+                <li>
+                  Humidity
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -70,16 +80,23 @@
       <!-- Below is link to JS-->
       <script src="script.js"></script>
       <script>
+
         //below is to search for a city and display that city, and weather at the city
         function showTemperature(response) {
           let temperature = Math.round(response.data.main.temp);
           tempDisplay = document.querySelector("#theTemp");
           tempDisplay.innerHTML = temperature;
           document.querySelector("#cardCity").innerHTML = response.data.name;
+          descriptionDisplay = document.querySelector("#descriptionElement")
+          descriptionDisplay.innerHTML = response.data.weather[0].description;
+          iconElement = document.querySelector("#emoji")
+          iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+          iconElement.setAttribute("alt", response.data.weather[0].description);
         }
         function searchCity(city) {
           let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
           let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+          console.log(apiUrl);
           axios.get(apiUrl).then(showTemperature);
         }
         function handleSubmit(event) {
