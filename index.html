@@ -38,7 +38,7 @@
           id="cityEntry"
         />
         <input type="submit" value="Search" class="search" />
-        <button id="current-location-button">Current Location</button>
+        <!-- here is code for a current location button, but I don't want to incorporate that right now. <button id="current-location-button">Current Location</button>-->
       </form>
       <br />
       <div class="card">
@@ -95,18 +95,18 @@
         searchCity("Boston");
 
         //below is what to do when the current location button gets pressed
-        let currentLocationButton = document.querySelector("button");
-        currentLocationButton.addEventListener("click", getCurrentLocation);
+        //let currentLocationButton = document.querySelector("button");
+        //currentLocationButton.addEventListener("click", getCurrentLocation);
 
-        function getCurrentLocation(event) {
-          event.preventDefault();
-          navigator.geolocation.getCurrentPosition(showPosition);
-          function showPosition(position) {
-            let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
-            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
-            axios.get(apiUrl).then(showTemperature);
-          }
-        }
+        //function getCurrentLocation(event) {
+         // event.preventDefault();
+          //navigator.geolocation.getCurrentPosition(showPosition);
+          //function showPosition(position) {
+            //let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
+            //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
+            //axios.get(apiUrl).then(showTemperature);
+          //}
+        //}
       </script>
     </div>
   </body>

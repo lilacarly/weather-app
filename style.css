@@ -15,10 +15,12 @@ form {
   text-align: center;
   font-size: larger;
 }
+
+/* here is styling for the current location button: 
 button {
   font-size: normal;
   border-radius: 5px;
-}
+}*/
 .card {
   border-radius: 10px;
 }
