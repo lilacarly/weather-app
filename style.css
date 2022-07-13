@@ -42,32 +42,3 @@ button {
   text-align: center;
   font-size: xx-large;
 }
-.futureHours {
-  font-size: larger;
-  text-align: center;
-}
-.futureEmojis {
-  font-size: larger;
-  text-align: center;
-}
-.futureTemps {
-  font-size: larger;
-  text-align: center;
-}
-.nextDays {
-  font-size: x-large;
-  text-align: center;
-  font-weight: 600;
-}
-.nextEmojis {
-  font-size: x-large;
-  text-align: center;
-}
-.nextTemps {
-  font-size: x-large;
-  text-align: center;
-}
-hr {
-  border: solid 2px black;
-  margin: 25px auto 15px auto;
-}
