@@ -24,21 +24,3 @@ let dayTime = `${currentDay} ${currentHour}:${currentMinute}`;
 
 let displayDay = document.querySelector("#todayDate");
 displayDay.innerHTML = dayTime;
-
-// below is to change between fahrenheit and celsius
-function toFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#theTemp");
-  temperatureElement.innerHTML = 66;
-}
-
-function toCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#theTemp");
-  temperatureElement.innerHTML = 19;
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", toFahrenheit);
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", toCelsius);
