@@ -55,6 +55,9 @@ function showTemperature(response) {
   let celsiusLink = document.querySelector("#celsius");
   celsiusLink.addEventListener("click", toCelsius);
 
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+
   document.querySelector("#cardCity").innerHTML = response.data.name;
   descriptionDisplay = document.querySelector("#descriptionElement");
   descriptionDisplay.innerHTML = response.data.weather[0].description;
