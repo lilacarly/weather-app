@@ -60,15 +60,16 @@
                   Description
                 </li>
                 <li>
-                  Windspeed
+                  Wind: <span id = "windspeedElement"></span> m/s
                 </li>
                 <li>
-                  Humidity
+                  Humidity: <span id = "humidityElement"></span>%
                 </li>
               </ul>
             </div>
           </div>
         </div>
+    
       
       <!-- Below is for bootstrap -->
       <script
@@ -112,9 +113,13 @@
 
 
           document.querySelector("#cardCity").innerHTML = response.data.name;
-          descriptionDisplay = document.querySelector("#descriptionElement")
+          descriptionDisplay = document.querySelector("#descriptionElement");
           descriptionDisplay.innerHTML = response.data.weather[0].description;
-          iconElement = document.querySelector("#emoji")
+          windDisplay = document.querySelector("#windspeedElement");
+          windDisplay.innerHTML = response.data.wind.speed;
+          humidityDisplay = document.querySelector("#humidityElement");
+          humidityDisplay.innerHTML = response.data.main.humidity;
+          iconElement = document.querySelector("#emoji");
           iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
           iconElement.setAttribute("alt", response.data.weather[0].description);
         }
@@ -127,7 +132,6 @@
         function handleSubmit(event) {
           debugger;
           event.preventDefault();
-          
           let city = document.querySelector("#cityEntry").value;
           searchCity(city);
         }
@@ -154,5 +158,6 @@
         //}
       </script>
     </div>
+    <footer>By Lila Graham, <a href = "https://github.com/lilacarly/weather-app">GitHub</a></footer>
   </body>
 </html>
