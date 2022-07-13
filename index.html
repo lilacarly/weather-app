@@ -49,8 +49,8 @@
               <p class="card-title city" id="cardCity">Boston, MA</p>
               <p class="card-text temp">
                 <span id="theTemp">85</span>
-                <a href="#" class="units" id="fahrenheit">˚F</a>
-                <a href="#" class="units active" id="celsius">˚C</a>
+                <a href="#" class="units active" id="fahrenheit">˚F</a>
+                <a href="#" class="units" id="celsius">˚C</a>
               </p>
             </div>
             <img src="" alt="Clear" id="emoji" class="col-4" />
@@ -60,7 +60,7 @@
                   Description
                 </li>
                 <li>
-                  Wind: <span id = "windspeedElement"></span> m/s
+                  Wind: <span id = "windspeedElement"></span> mph
                 </li>
                 <li>
                   Humidity: <span id = "humidityElement"></span>%
@@ -91,11 +91,10 @@
            // below is to change between fahrenheit and celsius
           function toFahrenheit(event) {
             event.preventDefault();
-            celsiusLink.classList.remove("active");
             fahrenheitLink.classList.add("active");
-            let fahrenheitTemp = (temperature*9/5+32);
+            celsiusLink.classList.remove("active");
             let temperatureElement = document.querySelector("#theTemp");
-            temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+            temperatureElement.innerHTML = temperature;
           }
 
           function toCelsius(event) {
@@ -103,7 +102,9 @@
             celsiusLink.classList.add("active");
             fahrenheitLink.classList.remove("active");
             let temperatureElement = document.querySelector("#theTemp");
-            temperatureElement.innerHTML = temperature;
+            let celsiusTemp = Math.round((temperature-32)*5/9);
+            console.log(celsiusTemp);
+            temperatureElement.innerHTML = celsiusTemp;
           }
 
           let fahrenheitLink = document.querySelector("#fahrenheit");
@@ -125,7 +126,7 @@
         }
         function searchCity(city) {
           let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
-          let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+          let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
           console.log(apiUrl);
           axios.get(apiUrl).then(showTemperature);
         }
