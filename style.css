@@ -35,7 +35,19 @@ button {
   font-size: medium;
   position: relative;
   bottom: 10px;
+  text-decoration: none;
 }
+
+.temp .active {
+  color: black;
+  cursor: default;
+  font-size: large;
+}
+
+.temp .active:hover {
+  text-decoration: none;
+}
+
 .hour {
   text-align: center;
   font-size: x-large;

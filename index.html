@@ -50,7 +50,7 @@
               <p class="card-text temp">
                 <span id="theTemp">85</span>
                 <a href="#" class="units" id="fahrenheit">˚F</a>
-                <a href="#" class="units" id="celsius">˚C</a>
+                <a href="#" class="units active" id="celsius">˚C</a>
               </p>
             </div>
             <img src="" alt="Clear" id="emoji" class="col-4" />
@@ -90,6 +90,8 @@
            // below is to change between fahrenheit and celsius
           function toFahrenheit(event) {
             event.preventDefault();
+            celsiusLink.classList.remove("active");
+            fahrenheitLink.classList.add("active");
             let fahrenheitTemp = (temperature*9/5+32);
             let temperatureElement = document.querySelector("#theTemp");
             temperatureElement.innerHTML = Math.round(fahrenheitTemp);
@@ -97,6 +99,8 @@
 
           function toCelsius(event) {
             event.preventDefault();
+            celsiusLink.classList.add("active");
+            fahrenheitLink.classList.remove("active");
             let temperatureElement = document.querySelector("#theTemp");
             temperatureElement.innerHTML = temperature;
           }
@@ -123,12 +127,10 @@
         function handleSubmit(event) {
           debugger;
           event.preventDefault();
+          
           let city = document.querySelector("#cityEntry").value;
           searchCity(city);
         }
-
-
-       
 
 
         let newCity = document.querySelector("#search-form");
