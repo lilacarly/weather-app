@@ -1,9 +1,14 @@
 body {
-  background-color: rgba(22, 119, 22, 0.2);
+  background: linear-gradient(
+    179.4deg,
+    rgb(253, 240, 233) 2.2%,
+    rgb(255, 194, 203) 96.2%
+  );
+
   font-family: Lato;
 }
 h1 {
-  color: rgb(22, 119, 22);
+  color: #ec6f4c;
   text-align: center;
   margin: 20px 40px;
   background-color: white;
@@ -24,6 +29,7 @@ button {
 .card {
   border-radius: 10px;
 }
+
 .city {
   font-size: xx-large;
   font-weight: 700;
