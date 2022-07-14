@@ -52,6 +52,11 @@ button {
   font-size: large;
   font-weight: bold;
 }
+
+.col-4 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .city {
   font-size: xx-large;
   font-weight: 700;
@@ -80,10 +85,7 @@ button {
   text-align: center;
   font-size: x-large;
 }
-.emoji {
-  text-align: center;
-  font-size: xx-large;
-}
+
 ul {
   list-style: none;
 }
@@ -95,10 +97,12 @@ li:first-letter {
   font-weight: bold;
 }
 
-#emoji {
-  display: block;
-  position: relative;
-  bottom: 35px;
+.forecast-temp-min {
+  color: gray;
+}
+
+.forecast-date {
+  color: gray;
 }
 
 footer {
