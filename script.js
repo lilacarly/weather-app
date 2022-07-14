@@ -13,14 +13,19 @@ let days = [
 ];
 let currentDay = days[now.getDay()]; //here we're getting using the index to display the word of the day not the number
 let currentHour = now.getHours();
-if (currentHour < 10) {
-  currentHour = `0${currentHour}`; //this is making the hour have a 0 in front if it is less than 10
-}
 let currentMinute = now.getMinutes();
+let daytTime = ``;
 if (currentMinute < 10) {
   currentMinute = `0${currentMinute}`; //this is making the minutes have a 0 in front if it is less than 10
 }
-let dayTime = `${currentDay} ${currentHour}:${currentMinute}`;
+
+if (currentHour > 0 && currentHour <= 12) {
+  dayTime = `${currentDay} ${currentHour}:${currentMinute} am`;
+} else if (currentHour > 12) {
+  dayTime = `${currentDay} ${currentHour - 12}:${currentMinute} pm`;
+} else if (currentHour == 0) {
+  dayTime = `${currentDay} 12:${currentMinute} pm`;
+}
 
 let displayDay = document.querySelector("#todayDate");
 displayDay.innerHTML = dayTime;

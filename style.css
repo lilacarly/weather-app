@@ -89,6 +89,11 @@ ul {
 li:first-letter {
   text-transform: capitalize;
 }
+
+#descriptionElement {
+  font-weight: bold;
+}
+
 #emoji {
   display: block;
   position: relative;
