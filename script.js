@@ -30,12 +30,17 @@ if (currentHour > 0 && currentHour <= 12) {
 let displayDay = document.querySelector("#todayDate");
 displayDay.innerHTML = dayTime;
 
+function getForecast(coordinates) {
+  let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 //below is to search for a city and display that city, and weather at the city
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   tempDisplay = document.querySelector("#theTemp");
   tempDisplay.innerHTML = temperature;
-  displayForecast();
 
   // below is to change between fahrenheit and celsius
   function toFahrenheit(event) {
@@ -77,6 +82,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 function searchCity(city) {
   let apiKey = "79556a453ffc6ed66cacb6d61dc994cc";
@@ -91,7 +98,8 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
