@@ -16,6 +16,23 @@ h1 {
   line-height: 80px;
   font-weight: 600;
 }
+
+.entry {
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #ec6f4c;
+  border-style: solid;
+  padding: 10px;
+}
+
+.search {
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #ec6f4c;
+  border-style: solid;
+  padding: 6px;
+}
+
 form {
   text-align: center;
   font-size: larger;
@@ -28,6 +45,10 @@ button {
 }*/
 .card {
   border-radius: 10px;
+  border-style: none;
+}
+.card-header {
+  font-size: large;
 }
 
 .city {
@@ -72,4 +93,8 @@ li:first-letter {
   display: block;
   position: relative;
   bottom: 35px;
+}
+
+footer {
+  margin: 40px;
 }
