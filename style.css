@@ -46,9 +46,11 @@ button {
 .card {
   border-radius: 10px;
   border-style: none;
+  text-align: center;
 }
 .card-header {
   font-size: large;
+  font-weight: bold;
 }
 
 .city {
